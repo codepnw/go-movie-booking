@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS bookings (
+    id SERIAL PRIMARY KEY,
+    user_id INT REFERENCES users(id) ON DELETE CASCADE,
+    movie_id INT REFERENCES movies(id) ON DELETE CASCADE,
+    seats INT NOT NULL,
+    booked_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
