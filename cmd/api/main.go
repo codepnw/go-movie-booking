@@ -5,6 +5,7 @@ import (
 	"os"
 
 	"github.com/codepnw/go-movie-booking/pkg/database"
+	"github.com/gin-gonic/gin"
 	"github.com/joho/godotenv"
 )
 
@@ -19,5 +20,9 @@ func main() {
 	}
 	defer db.Close()
 
-	log.Println("database connected.....")
+	router := gin.Default()
+
+	apiRoutes(router, db, "v1")
+
+	router.Run(":8080")
 }
